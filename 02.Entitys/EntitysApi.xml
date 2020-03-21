@@ -1,0 +1,457 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>02.Entitys</name>
+    </assembly>
+    <members>
+        <member name="T:_02.Entitys.Account">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:_02.Entitys.Account.RoleIDList">
+            <summary>
+            角色ID
+            </summary>
+        </member>
+        <member name="P:_02.Entitys.Account.IsSuperManage">
+            <summary>
+            当前登录人 是否是 超级管理员
+            </summary>
+        </member>
+        <member name="P:_02.Entitys.Account.User">
+            <summary>
+            User对象
+            </summary>
+        </member>
+        <member name="M:_02.Entitys.Account.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:_02.Entitys.EntityTest">
+            <summary>
+            实体类测试
+            </summary>
+        </member>
+        <member name="P:_02.Entitys.EntityTest.Name">
+            <summary>
+            账号
+            </summary>
+        </member>
+        <member name="P:_02.Entitys.EntityTest.Pwd">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="T:_02.Entitys.ORM.Sys_Function">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_Function.Function_ID">
+            <summary>
+            Desc:
+            Default:newid()
+            Nullable:False
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_Function.Function_Num">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_Function.Function_Name">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_Function.Function_ByName">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_Function.Function_CreateTime">
+            <summary>
+            Desc:
+            Default:DateTime.Now
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="T:_02.Entitys.ORM.Sys_Menu">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_Menu.Menu_ID">
+            <summary>
+            Desc:
+            Default:newid()
+            Nullable:False
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_Menu.Menu_Num">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_Menu.Menu_Name">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_Menu.Menu_Url">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_Menu.Menu_Icon">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_Menu.Menu_ParentID">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_Menu.Menu_IsShow">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_Menu.Menu_CreateTime">
+            <summary>
+            Desc:
+            Default:DateTime.Now
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="T:_02.Entitys.ORM.Sys_MenuFunction">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_MenuFunction.MenuFunction_ID">
+            <summary>
+            Desc:
+            Default:newid()
+            Nullable:False
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_MenuFunction.MenuFunction_MenuID">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_MenuFunction.MenuFunction_FunctionID">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_MenuFunction.MenuFunction_CreateTime">
+            <summary>
+            Desc:
+            Default:DateTime.Now
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="T:_02.Entitys.ORM.Sys_NLog">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_NLog.NLog_Id">
+            <summary>
+            Desc:
+            Default:newid()
+            Nullable:False
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_NLog.NLog_Application">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_NLog.NLog_Logged">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_NLog.NLog_Level">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_NLog.NLog_Message">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_NLog.NLog_Logger">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_NLog.NLog_Callsite">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_NLog.NLog_Exception">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="T:_02.Entitys.ORM.Sys_Role">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_Role.Role_ID">
+            <summary>
+            Desc:
+            Default:newid()
+            Nullable:False
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_Role.Role_Num">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_Role.Role_Name">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_Role.Role_Remark">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_Role.Role_IsDelete">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_Role.Role_CreateTime">
+            <summary>
+            Desc:
+            Default:DateTime.Now
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="T:_02.Entitys.ORM.Sys_RoleMenuFunction">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_RoleMenuFunction.RoleMenuFunction_ID">
+            <summary>
+            Desc:
+            Default:newid()
+            Nullable:False
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_RoleMenuFunction.RoleMenuFunction_RoleID">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_RoleMenuFunction.RoleMenuFunction_FunctionID">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_RoleMenuFunction.RoleMenuFunction_MenuID">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_RoleMenuFunction.RoleMenuFunction_CreateTime">
+            <summary>
+            Desc:
+            Default:DateTime.Now
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="T:_02.Entitys.ORM.Sys_User">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_User.User_ID">
+            <summary>
+            Desc:
+            Default:newid()
+            Nullable:False
+            </summary>        
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_User.User_Name">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_User.User_LoginName">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_User.User_Pwd">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_User.User_Email">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_User.User_IsDelete">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_User.User_CreateTime">
+            <summary>
+            Desc:
+            Default:DateTime.Now
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="T:_02.Entitys.ORM.Sys_UserRole">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_UserRole.UserRole_ID">
+            <summary>
+            Desc:
+            Default:newid()
+            Nullable:False
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_UserRole.UserRole_UserID">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_UserRole.UserRole_RoleID">
+            <summary>
+            Desc:
+            Default:
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ORM.Sys_UserRole.UserRole_CreateTime">
+            <summary>
+            Desc:
+            Default:DateTime.Now
+            Nullable:True
+            </summary>           
+        </member>
+        <member name="P:_02.Entitys.ResponseJson.State">
+            <summary>
+            返回结果
+            </summary>
+        </member>
+        <member name="P:_02.Entitys.ResponseJson.Message">
+            <summary>
+            定义消息
+            </summary>
+        </member>
+        <member name="P:_02.Entitys.ResponseJson.Data">
+            <summary>
+            返回数据
+            </summary>
+        </member>
+        <member name="T:_02.Entitys.StateEnum">
+            <summary>
+            返回客户端调用状态
+            </summary>
+        </member>
+        <member name="F:_02.Entitys.StateEnum.Success">
+            <summary>
+            成功 
+            </summary>
+        </member>
+        <member name="F:_02.Entitys.StateEnum.Fail">
+            <summary>
+            失败
+            </summary>
+        </member>
+        <member name="F:_02.Entitys.StateEnum.Error">
+            <summary>
+            错误
+            </summary>
+        </member>
+        <member name="F:_02.Entitys.StateEnum.NoLogin">
+            <summary>
+            登录过期或者未登录
+            </summary>
+        </member>
+    </members>
+</doc>

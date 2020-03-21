@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>_03.BLL</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\02.Entitys\02.Entitys.csproj" />
+    <ProjectReference Include="..\04.DAL\04.DAL.csproj" />
+  </ItemGroup>
+
+</Project>

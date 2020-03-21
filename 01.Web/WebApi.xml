@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>01.Web</name>
+    </assembly>
+    <members>
+        <member name="T:_01.Web.Aop.AopWebActionFilter">
+            <summary>
+            检查Session
+            </summary>
+        </member>
+        <member name="M:_01.Web.Aop.AopWebActionFilter.#ctor(Microsoft.Extensions.Logging.ILogger{_01.Web.Aop.AopWebActionFilter})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="P:_01.Web.Aop.AopWebActionFilter.Ignore">
+            <summary>
+            忽略特性
+            </summary>
+        </member>
+        <member name="M:_01.Web.Aop.AopWebActionFilter.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <summary>
+            每次请求Action之前发生，，在行为方法执行前执行
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:_01.Web.Controllers.BaseController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:_01.Web.Controllers.BaseController._DbClient">
+            <summary>
+            数据访问对象
+            </summary>
+        </member>
+        <member name="P:_01.Web.Controllers.BaseController._Account">
+            <summary>
+            当前用户信息
+            </summary>
+        </member>
+        <member name="P:_01.Web.Controllers.BaseController._IgnoreSessionCheck">
+            <summary>
+            是否忽略Session检查
+            </summary>
+        </member>
+        <member name="T:_01.Web.Controllers.LoginController">
+            <summary>
+            登录测试类
+            </summary>
+        </member>
+        <member name="M:_01.Web.Controllers.LoginController.Login(System.String,System.String)">
+            <summary>
+            登录方法
+            </summary>
+            <param name="LoginName"></param>
+            <param name="LoginPwd"></param>
+            <returns></returns>
+        </member>
+        <member name="T:_01.Web.Controllers.SysManageController">
+            <summary>
+            系统管理
+            </summary>
+        </member>
+        <member name="M:_01.Web.Controllers.SysManageController.CreateAllTable(System.String,System.String)">
+            <summary>
+            生成实体（所有表）
+            </summary>
+            <param name="FilePath"></param>
+            <param name="NameSpace"></param>
+        </member>
+        <member name="M:_01.Web.Controllers.SysManageController.CreateTables(System.String[],System.String,System.String)">
+            <summary>
+            CereatTableEntity
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:_01.Web.Controllers.Sys.FunctionController">
+            <summary>
+            功能按钮控制器
+            </summary>
+        </member>
+        <member name="T:_01.Web.Controllers.Sys.MenuController">
+            <summary>
+            菜单控制器
+            </summary>
+        </member>
+        <member name="M:_01.Web.Controllers.Sys.MenuController.GetMenuData">
+            <summary>
+            获取菜单数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:_01.Web.Controllers.Sys.MenuController.GetMenuByRoleID">
+            <summary>
+            根据角色ID 获取菜单
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:_01.Web.Controllers.Sys.MenuFunctionController">
+            <summary>
+            菜单按钮功能控制器
+            </summary>
+        </member>
+        <member name="T:_01.Web.Controllers.Sys.RoleController">
+            <summary>
+            角色控制器
+            </summary>
+        </member>
+        <member name="T:_01.Web.Controllers.Sys.RoleMenuFunctionController">
+            <summary>
+            角色菜单功能控制器
+            </summary>
+        </member>
+        <member name="T:_01.Web.Controllers.Sys.UserController">
+            <summary>
+            用户控制器
+            </summary>
+        </member>
+        <member name="T:_01.Web.Controllers.Sys.UserRoleController">
+            <summary>
+            用户角色控制器
+            </summary>
+        </member>
+        <member name="T:_01.Web.MiddleWare.TokenAuthMiddle">
+            <summary>
+            Token验证授权中间件
+            </summary>
+        </member>
+        <member name="F:_01.Web.MiddleWare.TokenAuthMiddle._next">
+            <summary>
+            http委托
+            </summary>
+        </member>
+        <member name="M:_01.Web.MiddleWare.TokenAuthMiddle.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Logging.ILogger{_01.Web.MiddleWare.TokenAuthMiddle})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="next"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:_01.Web.MiddleWare.TokenAuthMiddle.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            验证授权
+            </summary>
+            <param name="httpContext"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
