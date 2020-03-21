@@ -4,20 +4,22 @@ using SqlSugar;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using _04.DAL;
+using _03.Logic.Interface;
 using System;
 
 namespace _03.Logic.Sys
 {
 
-    public class MenuLogic
+    public class MenuLogic : IMenuLogic
     {
-
-        public MenuLogic(SqlSugarClient DbClient)
+        private readonly ICoreDb _iCoreDb;
+        public MenuLogic(ICoreDb iCoreDb)
         {
-            this.DbClient = DbClient;
+            this._iCoreDb = iCoreDb;
         }
 
-        private SqlSugarClient DbClient;
+        public SqlSugarClient GetDbClient() { return _iCoreDb.GetDbClient(); }
 
 
         /// <summary>
@@ -26,7 +28,7 @@ namespace _03.Logic.Sys
         /// <returns></returns>
         public object GetMenuData()
         {
-            var menuList = DbClient.Queryable<Sys_Menu, Sys_Menu>((m1, m2) => new object[] {
+            var menuList = GetDbClient().Queryable<Sys_Menu, Sys_Menu>((m1, m2) => new object[] {
                 JoinType.Left,m1.Menu_ParentID == m2.Menu_ID})
                 .Where((m1, m2) => m1.Menu_IsShow == 1 && m2.Menu_IsShow == 1)
                 .Select((m1, m2) => new
@@ -49,14 +51,14 @@ namespace _03.Logic.Sys
         /// 根据角色ID 获取菜单
         /// </summary>
         /// <returns></returns>
-        public async Task<List<Sys_Menu>> GetMenuByRoleID(Account _Account)
+        public async Task<List<Sys_Menu>> GetMenuByRoleID(Account account)
         {
 
-            if (_Account.IsSuperManage)
-                return DbClient.Queryable<Sys_Menu>().Where(m1 => m1.Menu_IsShow == 1).OrderBy(m1 => m1.Menu_Num).ToList();
+            if (account.IsSuperManage)
+                return _iCoreDb.GetDbClient().Queryable<Sys_Menu>().Where(m1 => m1.Menu_IsShow == 1).OrderBy(m1 => m1.Menu_Num).ToList();
 
-            var RoleMenuList = DbClient.Queryable<Sys_RoleMenuFunction, Sys_Menu, Sys_Function>((m1, m2, m3) =>
-                SqlFunc.Subqueryable<Sys_RoleMenuFunction>().Where(p => p.RoleMenuFunction_RoleID ==_Account.RoleIDList[0] ).Any()
+            var RoleMenuList = _iCoreDb.GetDbClient().Queryable<Sys_RoleMenuFunction, Sys_Menu, Sys_Function>((m1, m2, m3) =>
+                SqlFunc.Subqueryable<Sys_RoleMenuFunction>().Where(p => account.RoleIDList.Contains((Guid)p.RoleMenuFunction_RoleID)).Any()
 
                 //_Account.RoleIDList.Where(a => a == m1.RoleMenuFunction_RoleID).Any()
                 && m1.RoleMenuFunction_MenuID == m2.Menu_ID

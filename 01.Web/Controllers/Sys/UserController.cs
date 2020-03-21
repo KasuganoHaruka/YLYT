@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using _02.Entitys.ORM;
+using _03.Logic.Interface;
 using _04.DAL;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,8 +19,13 @@ namespace _01.Web.Controllers.Sys
     [ApiController]
     public class UserController : BaseController
     {
-        public UserController()
+        /// <summary>
+        /// 数据访问对象
+        /// </summary>
+        private readonly IBaseLogic _logic;
+        public UserController(IBaseLogic logic)
         {
+            this._logic = logic;
         }
 
         #region Insert
@@ -27,19 +33,19 @@ namespace _01.Web.Controllers.Sys
         [HttpPost("Insert")]
         public async Task<object> Insert(Sys_User ent)
         {
-            return _DbClient.GetSimpleClient<Sys_User>().Insert(ent);
+            return _logic.GetDbClient().GetSimpleClient<Sys_User>().Insert(ent);
         }
 
         [HttpPost("InsertReturnIdentity")]
         public async Task<object> InsertReturnIdentity(Sys_User ent)
         {
-            return _DbClient.GetSimpleClient<Sys_User>().InsertReturnIdentity(ent);
+            return _logic.GetDbClient().GetSimpleClient<Sys_User>().InsertReturnIdentity(ent);
         }
 
         [HttpPost("InsertRange")]
         public async Task<object> InsertRange(Sys_User[] ents)
         {
-            return _DbClient.GetSimpleClient<Sys_User>().InsertRange(ents);
+            return _logic.GetDbClient().GetSimpleClient<Sys_User>().InsertRange(ents);
         }
 
         #endregion
@@ -50,19 +56,19 @@ namespace _01.Web.Controllers.Sys
         [HttpPost("DeleteById")]
         public async Task<object> DeleteById(string id)
         {
-            return _DbClient.GetSimpleClient<Sys_User>().DeleteById(id);
+            return _logic.GetDbClient().GetSimpleClient<Sys_User>().DeleteById(id);
         }
 
         [HttpPost("Delete")]
         public async Task<object> Delete(Sys_User ent)
         {
-            return _DbClient.GetSimpleClient<Sys_User>().Delete(ent);
+            return _logic.GetDbClient().GetSimpleClient<Sys_User>().Delete(ent);
         }
 
         [HttpPost("DeleteByIds")]
         public async Task<object> DeleteByIds(string[] ids)
         {
-            return _DbClient.GetSimpleClient<Sys_User>().DeleteByIds(ids);
+            return _logic.GetDbClient().GetSimpleClient<Sys_User>().DeleteByIds(ids);
         }
 
         #endregion
@@ -73,13 +79,13 @@ namespace _01.Web.Controllers.Sys
         [HttpPost("Update")]
         public async Task<object> Update(Sys_User ent)
         {
-            return _DbClient.GetSimpleClient<Sys_User>().Update(ent);
+            return _logic.GetDbClient().GetSimpleClient<Sys_User>().Update(ent);
         }
 
         [HttpPost("UpdateRange")]
         public async Task<object> UpdateRange(Sys_User[] ents)
         {
-            return _DbClient.GetSimpleClient<Sys_User>().UpdateRange(ents);
+            return _logic.GetDbClient().GetSimpleClient<Sys_User>().UpdateRange(ents);
         }
 
         #endregion
@@ -90,19 +96,19 @@ namespace _01.Web.Controllers.Sys
         [HttpPost("GetList")]
         public async Task<object> GetList()
         {
-            return _DbClient.GetSimpleClient<Sys_User>().GetList();
+            return _logic.GetDbClient().GetSimpleClient<Sys_User>().GetList();
         }
 
         [HttpPost("GetPageList")]
         public async Task<object> GetPageList(PageModel page)
         {
-            return _DbClient.GetSimpleClient<Sys_User>().GetPageList(new List<IConditionalModel>(), page);
+            return _logic.GetDbClient().GetSimpleClient<Sys_User>().GetPageList(new List<IConditionalModel>(), page);
         }
 
         [HttpPost("GetById")]
         public async Task<object> GetById(string id)
         {
-            return _DbClient.GetSimpleClient<Sys_User>().GetById(id);
+            return _logic.GetDbClient().GetSimpleClient<Sys_User>().GetById(id);
         }
 
         #endregion

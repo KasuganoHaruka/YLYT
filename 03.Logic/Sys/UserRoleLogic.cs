@@ -1,5 +1,5 @@
-﻿using _02.Entitys;
-using _02.Entitys.ORM;
+﻿using _02.Entitys.ORM;
+using _04.DAL;
 using SqlSugar;
 
 
@@ -9,19 +9,21 @@ namespace _03.Logic.Sys
     public class UserRoleLogic
     {
 
-        public UserRoleLogic(SqlSugarClient DbClient)
+        /// <summary>
+        /// 数据访问对象
+        /// </summary>
+        private readonly ICoreDb iCoreDb;
+        public UserRoleLogic(ICoreDb iCoreDb)
         {
-            this.DbClient = DbClient;
+            this.iCoreDb = iCoreDb;
         }
-
-        private SqlSugarClient DbClient;
 
 
         /// <summary>
         /// 获取菜单数据
         /// </summary>
         /// <returns></returns>
-        public  object GetMenuData()
+        public object GetMenuData()
         {
             //不需要用LEFT JOIN或者 RIGHT JOIN 只是单纯的INNER JOIN时
             //var menuList = DbClient.Queryable<Sys_Menu, Sys_Menu>((m1, m2) => m1.Menu_ParentID == m2.Menu_ID)
@@ -38,7 +40,7 @@ namespace _03.Logic.Sys
             //        Parent_IsShow = m2.Menu_IsShow
             //    }).OrderBy((m1) => m1.Menu_Num).ToList();
 
-            var menuList = DbClient.Queryable<Sys_Menu, Sys_Menu>((m1, m2) => new object[] {
+            var menuList = iCoreDb.GetDbClient().Queryable<Sys_Menu, Sys_Menu>((m1, m2) => new object[] {
                 JoinType.Left,m1.Menu_ParentID == m2.Menu_ID})
                 .Select((m1, m2) => new
                 {

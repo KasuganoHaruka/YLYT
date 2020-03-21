@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using _02.Entitys.ORM;
+using _03.Logic.Interface;
 using _03.Logic.Sys;
 using Microsoft.AspNetCore.Mvc;
 using SqlSugar;
@@ -15,10 +16,14 @@ namespace _01.Web.Controllers.Sys
     [ApiController]
     public class MenuController : BaseController
     {
-        private MenuLogic logic;
-        public MenuController() 
+
+        /// <summary>
+        /// 数据访问对象
+        /// </summary>
+        private readonly IMenuLogic _logic;
+        public MenuController(IMenuLogic logic)
         {
-            this.logic = new MenuLogic(_DbClient);
+            this._logic = logic;
         }
 
 
@@ -27,19 +32,19 @@ namespace _01.Web.Controllers.Sys
         [HttpPost("Insert")]
         public async Task<object> Insert(Sys_Menu ent)
         {
-            return _DbClient.GetSimpleClient<Sys_Menu>().Insert(ent);
+            return _logic.GetDbClient().GetSimpleClient<Sys_Menu>().Insert(ent);
         }
 
         [HttpPost("InsertReturnIdentity")]
         public async Task<object> InsertReturnIdentity(Sys_Menu ent)
         {
-            return _DbClient.GetSimpleClient<Sys_Menu>().InsertReturnIdentity(ent);
+            return _logic.GetDbClient().GetSimpleClient<Sys_Menu>().InsertReturnIdentity(ent);
         }
 
         [HttpPost("InsertRange")]
         public async Task<object> InsertRange(Sys_Menu[] ents)
         {
-            return _DbClient.GetSimpleClient<Sys_Menu>().InsertRange(ents);
+            return _logic.GetDbClient().GetSimpleClient<Sys_Menu>().InsertRange(ents);
         }
 
         #endregion
@@ -50,19 +55,19 @@ namespace _01.Web.Controllers.Sys
         [HttpPost("DeleteById")]
         public async Task<object> DeleteById(string id)
         {
-            return _DbClient.GetSimpleClient<Sys_Menu>().DeleteById(id);
+            return _logic.GetDbClient().GetSimpleClient<Sys_Menu>().DeleteById(id);
         }
 
         [HttpPost("Delete")]
         public async Task<object> Delete(Sys_Menu ent)
         {
-            return _DbClient.GetSimpleClient<Sys_Menu>().Delete(ent);
+            return _logic.GetDbClient().GetSimpleClient<Sys_Menu>().Delete(ent);
         }
 
         [HttpPost("DeleteByIds")]
         public async Task<object> DeleteByIds(string[] ids)
         {
-            return _DbClient.GetSimpleClient<Sys_Menu>().DeleteByIds(ids);
+            return _logic.GetDbClient().GetSimpleClient<Sys_Menu>().DeleteByIds(ids);
         }
 
         #endregion
@@ -73,13 +78,13 @@ namespace _01.Web.Controllers.Sys
         [HttpPost("Update")]
         public async Task<object> Update(Sys_Menu ent)
         {
-            return _DbClient.GetSimpleClient<Sys_Menu>().Update(ent);
+            return _logic.GetDbClient().GetSimpleClient<Sys_Menu>().Update(ent);
         }
 
         [HttpPost("UpdateRange")]
         public async Task<object> UpdateRange(Sys_Menu[] ents)
         {
-            return _DbClient.GetSimpleClient<Sys_Menu>().UpdateRange(ents);
+            return _logic.GetDbClient().GetSimpleClient<Sys_Menu>().UpdateRange(ents);
         }
 
         #endregion
@@ -90,23 +95,22 @@ namespace _01.Web.Controllers.Sys
         [HttpPost("GetList")]
         public async Task<object> GetList()
         {
-            return _DbClient.GetSimpleClient<Sys_Menu>().GetList();
+            return _logic.GetDbClient().GetSimpleClient<Sys_Menu>().GetList();
         }
 
         [HttpPost("GetPageList")]
         public async Task<object> GetPageList(PageModel page)
         {
-            return _DbClient.GetSimpleClient<Sys_Menu>().GetPageList(new List<IConditionalModel>(), page);
+            return _logic.GetDbClient().GetSimpleClient<Sys_Menu>().GetPageList(new List<IConditionalModel>(), page);
         }
 
         [HttpPost("GetById")]
         public async Task<object> GetById(string id)
         {
-            return _DbClient.GetSimpleClient<Sys_Menu>().GetById(id);
+            return _logic.GetDbClient().GetSimpleClient<Sys_Menu>().GetById(id);
         }
 
         #endregion
-
 
 
         #region Logic
@@ -116,9 +120,9 @@ namespace _01.Web.Controllers.Sys
         /// </summary>
         /// <returns></returns>
         [HttpPost("GetMenuData")]
-        public async Task<object> GetMenuData() 
+        public async Task<object> GetMenuData()
         {
-            return logic.GetMenuData();
+            return _logic.GetMenuData();
         }
 
 
@@ -129,11 +133,10 @@ namespace _01.Web.Controllers.Sys
         [HttpPost("GetMenuByRoleID")]
         public async Task<object> GetMenuByRoleID()
         {
-            return logic.GetMenuByRoleID(_Account);
+            return _logic.GetMenuByRoleID(CurrentAccount).Result;
         }
 
-
-        
+   
         #endregion
 
     }

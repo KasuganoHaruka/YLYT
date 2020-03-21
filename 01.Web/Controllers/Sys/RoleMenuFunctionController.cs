@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using _02.Entitys.ORM;
+using _03.Logic.Interface;
 using _04.DAL;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,24 +20,35 @@ namespace _01.Web.Controllers.Sys
     public class RoleMenuFunctionController : BaseController
     {
 
+
+
+        /// <summary>
+        /// 数据访问对象
+        /// </summary>
+        private readonly IBaseLogic _logic;
+        public RoleMenuFunctionController(IBaseLogic logic)
+        {
+            this._logic = logic;
+        }
+
         #region Insert
 
         [HttpPost("Insert")]
         public async Task<object> Insert(Sys_RoleMenuFunction ent)
         {
-            return _DbClient.GetSimpleClient<Sys_RoleMenuFunction>().Insert(ent);
+            return _logic.GetDbClient().GetSimpleClient<Sys_RoleMenuFunction>().Insert(ent);
         }
 
         [HttpPost("InsertReturnIdentity")]
         public async Task<object> InsertReturnIdentity(Sys_RoleMenuFunction ent)
         {
-            return _DbClient.GetSimpleClient<Sys_RoleMenuFunction>().InsertReturnIdentity(ent);
+            return _logic.GetDbClient().GetSimpleClient<Sys_RoleMenuFunction>().InsertReturnIdentity(ent);
         }
 
         [HttpPost("InsertRange")]
         public async Task<object> InsertRange(Sys_RoleMenuFunction[] ents)
         {
-            return _DbClient.GetSimpleClient<Sys_RoleMenuFunction>().InsertRange(ents);
+            return _logic.GetDbClient().GetSimpleClient<Sys_RoleMenuFunction>().InsertRange(ents);
         }
 
         #endregion
@@ -47,19 +59,19 @@ namespace _01.Web.Controllers.Sys
         [HttpPost("DeleteById")]
         public async Task<object> DeleteById(string id)
         {
-            return _DbClient.GetSimpleClient<Sys_RoleMenuFunction>().DeleteById(id);
+            return _logic.GetDbClient().GetSimpleClient<Sys_RoleMenuFunction>().DeleteById(id);
         }
 
         [HttpPost("Delete")]
         public async Task<object> Delete(Sys_RoleMenuFunction ent)
         {
-            return _DbClient.GetSimpleClient<Sys_RoleMenuFunction>().Delete(ent);
+            return _logic.GetDbClient().GetSimpleClient<Sys_RoleMenuFunction>().Delete(ent);
         }
 
         [HttpPost("DeleteByIds")]
         public async Task<object> DeleteByIds(string[] ids)
         {
-            return _DbClient.GetSimpleClient<Sys_RoleMenuFunction>().DeleteByIds(ids);
+            return _logic.GetDbClient().GetSimpleClient<Sys_RoleMenuFunction>().DeleteByIds(ids);
         }
 
         #endregion
@@ -70,13 +82,13 @@ namespace _01.Web.Controllers.Sys
         [HttpPost("Update")]
         public async Task<object> Update(Sys_RoleMenuFunction ent)
         {
-            return _DbClient.GetSimpleClient<Sys_RoleMenuFunction>().Update(ent);
+            return _logic.GetDbClient().GetSimpleClient<Sys_RoleMenuFunction>().Update(ent);
         }
 
         [HttpPost("UpdateRange")]
         public async Task<object> UpdateRange(Sys_RoleMenuFunction[] ents)
         {
-            return _DbClient.GetSimpleClient<Sys_RoleMenuFunction>().UpdateRange(ents);
+            return _logic.GetDbClient().GetSimpleClient<Sys_RoleMenuFunction>().UpdateRange(ents);
         }
 
         #endregion
@@ -87,19 +99,19 @@ namespace _01.Web.Controllers.Sys
         [HttpPost("GetList")]
         public async Task<object> GetList()
         {
-            return _DbClient.GetSimpleClient<Sys_RoleMenuFunction>().GetList();
+            return _logic.GetDbClient().GetSimpleClient<Sys_RoleMenuFunction>().GetList();
         }
 
         [HttpPost("GetPageList")]
         public async Task<object> GetPageList(PageModel page)
         {
-            return _DbClient.GetSimpleClient<Sys_RoleMenuFunction>().GetPageList(new List<IConditionalModel>(), page);
+            return _logic.GetDbClient().GetSimpleClient<Sys_RoleMenuFunction>().GetPageList(new List<IConditionalModel>(), page);
         }
 
         [HttpPost("GetById")]
         public async Task<object> GetById(string id)
         {
-            return _DbClient.GetSimpleClient<Sys_RoleMenuFunction>().GetById(id);
+            return _logic.GetDbClient().GetSimpleClient<Sys_RoleMenuFunction>().GetById(id);
         }
 
         #endregion

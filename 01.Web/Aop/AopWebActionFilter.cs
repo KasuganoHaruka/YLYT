@@ -45,7 +45,7 @@ namespace _01.Web.Aop
             var _Controller = context.Controller as BaseController;
 
             //如果没有忽略Session 检查
-            if (!_Controller._IgnoreSessionCheck)
+            if (!_Controller.IgnoreSessionCheck)
             {
                 var tokenStr = context.HttpContext.Request.Headers["Authorization"];
                 string jwtStr = tokenStr.ToString().Substring("Bearer ".Length).Trim();
@@ -53,7 +53,7 @@ namespace _01.Web.Aop
 
                 if (account != null)
                 {
-                    _Controller._Account = account;
+                    _Controller.CurrentAccount = account;
                     _logger.LogInformation($"User_Name={account.User.User_Name},IsSuper={account.IsSuperManage}");
                 }
                 else

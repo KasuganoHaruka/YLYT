@@ -3,11 +3,12 @@ using System.Threading.Tasks;
 using _02.Entitys;
 using _02.Entitys.ORM;
 using _03.Logic;
+using _04.DAL;
 using _05.Toolkit.JwtToken;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Quartz;
+using _03.Logic.Interface;
 
 namespace _01.Web.Controllers
 {
@@ -21,13 +22,14 @@ namespace _01.Web.Controllers
     {
 
         private readonly ILogger<LoginController> _logger;
-        private AccounttLogic _logic;
+        private IBaseLogic _logic;
 
-        public LoginController(ILogger<LoginController> logger, ISchedulerFactory schedulerFactory)
+
+        public LoginController(ILogger<LoginController> logger, IBaseLogic baseLogic)
         {
             this._logger = logger;
-            this._logic = new AccounttLogic();
-            this._IgnoreSessionCheck = true;
+            this._logic = baseLogic;
+            this.IgnoreSessionCheck = true;
         }
 
 
@@ -42,7 +44,7 @@ namespace _01.Web.Controllers
         {
             //var getByWhere = db.Queryable<Student>().Where(it => it.Id == 1 || it.Name == "a").ToList();
 
-            var user = _DbClient.Queryable<Sys_User>().Where(p => p.User_LoginName == LoginName && p.User_Pwd == LoginPwd).First();
+            var user = _logic.GetDbClient().Queryable<Sys_User>().Where(p => p.User_LoginName == LoginName && p.User_Pwd == LoginPwd).First();
 
             if (user == null)
             {
@@ -50,7 +52,15 @@ namespace _01.Web.Controllers
             }
             else
             {
-                var token = JwtToken.IssueJWT(_logic.GetAccountByUser(user).Result, new TimeSpan(0, 60, 0), new TimeSpan(12, 00, 0));
+                var _RoleList = _logic.GetDbClient().Queryable<Sys_UserRole>().Where(m1 => m1.UserRole_UserID == user.User_ID).Select(m1 => m1.UserRole_RoleID).ToList();
+                CurrentAccount = new Account
+                {
+                    RoleIDList = _RoleList,
+                    User = user,
+                    IsSuperManage = false
+                };
+
+                var token = JwtToken.IssueJWT(CurrentAccount, new TimeSpan(0, 60, 0), new TimeSpan(12, 00, 0));
                 return token;
             }
         }

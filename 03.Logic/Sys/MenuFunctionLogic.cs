@@ -1,5 +1,6 @@
 ﻿using _02.Entitys;
 using _02.Entitys.ORM;
+using _03.Logic.Interface;
 using SqlSugar;
 
 
@@ -9,12 +10,14 @@ namespace _03.Logic.Sys
     public class MenuFunctionLogic
     {
 
-        public MenuFunctionLogic(SqlSugarClient DbClient)
+        /// <summary>
+        /// 数据访问对象
+        /// </summary>
+        private readonly IBaseLogic _logic;
+        public MenuFunctionLogic(IBaseLogic logic)
         {
-            this.DbClient = DbClient;
+            this._logic = logic;
         }
-
-        private SqlSugarClient DbClient;
 
 
         /// <summary>
@@ -38,7 +41,7 @@ namespace _03.Logic.Sys
             //        Parent_IsShow = m2.Menu_IsShow
             //    }).OrderBy((m1) => m1.Menu_Num).ToList();
 
-            var menuList = DbClient.Queryable<Sys_Menu, Sys_Menu>((m1, m2) => new object[] {
+            var menuList = _logic.GetDbClient().Queryable<Sys_Menu, Sys_Menu>((m1, m2) => new object[] {
                 JoinType.Left,m1.Menu_ParentID == m2.Menu_ID})
                 .Select((m1, m2) => new
                 {

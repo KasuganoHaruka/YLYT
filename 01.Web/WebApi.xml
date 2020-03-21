@@ -31,17 +31,12 @@
             
             </summary>
         </member>
-        <member name="P:_01.Web.Controllers.BaseController._DbClient">
-            <summary>
-            数据访问对象
-            </summary>
-        </member>
-        <member name="P:_01.Web.Controllers.BaseController._Account">
+        <member name="P:_01.Web.Controllers.BaseController.CurrentAccount">
             <summary>
             当前用户信息
             </summary>
         </member>
-        <member name="P:_01.Web.Controllers.BaseController._IgnoreSessionCheck">
+        <member name="P:_01.Web.Controllers.BaseController.IgnoreSessionCheck">
             <summary>
             是否忽略Session检查
             </summary>
@@ -82,9 +77,19 @@
             功能按钮控制器
             </summary>
         </member>
+        <member name="F:_01.Web.Controllers.Sys.FunctionController._logic">
+            <summary>
+            数据访问对象
+            </summary>
+        </member>
         <member name="T:_01.Web.Controllers.Sys.MenuController">
             <summary>
             菜单控制器
+            </summary>
+        </member>
+        <member name="F:_01.Web.Controllers.Sys.MenuController._logic">
+            <summary>
+            数据访问对象
             </summary>
         </member>
         <member name="M:_01.Web.Controllers.Sys.MenuController.GetMenuData">
@@ -99,9 +104,20 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:_01.Web.Controllers.Sys.MenuController.GetMenuByRoleIDResult">
+            <summary>
+            根据角色ID 获取菜单
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:_01.Web.Controllers.Sys.MenuFunctionController">
             <summary>
             菜单按钮功能控制器
+            </summary>
+        </member>
+        <member name="F:_01.Web.Controllers.Sys.MenuFunctionController._logic">
+            <summary>
+            数据访问对象
             </summary>
         </member>
         <member name="T:_01.Web.Controllers.Sys.RoleController">
@@ -109,14 +125,29 @@
             角色控制器
             </summary>
         </member>
+        <member name="F:_01.Web.Controllers.Sys.RoleController._logic">
+            <summary>
+            数据访问对象
+            </summary>
+        </member>
         <member name="T:_01.Web.Controllers.Sys.RoleMenuFunctionController">
             <summary>
             角色菜单功能控制器
             </summary>
         </member>
+        <member name="F:_01.Web.Controllers.Sys.RoleMenuFunctionController._logic">
+            <summary>
+            数据访问对象
+            </summary>
+        </member>
         <member name="T:_01.Web.Controllers.Sys.UserController">
             <summary>
             用户控制器
+            </summary>
+        </member>
+        <member name="F:_01.Web.Controllers.Sys.UserController._logic">
+            <summary>
+            数据访问对象
             </summary>
         </member>
         <member name="T:_01.Web.Controllers.Sys.UserRoleController">

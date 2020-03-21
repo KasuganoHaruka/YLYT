@@ -2,6 +2,8 @@ using System;
 using System.IO;
 using _01.Web.MiddleWare;
 using _03.Logic;
+using _03.Logic.Interface;
+using _03.Logic.Sys;
 using _04.DAL;
 using _05.Toolkit;
 using Microsoft.AspNetCore.Builder;
@@ -98,8 +100,9 @@ namespace _01.Web
             });
             #endregion
 
-            //用注入的方式每个都要写构造函数，选择用基类继承的方式
-            //services.AddScoped(typeof(IDbContext), typeof(SqlSugarDbContext));
+            services.AddScoped(typeof(ICoreDb), typeof(SqlServerSqlSugar));
+            services.AddScoped(typeof(IBaseLogic), typeof(BaseLogic));
+            services.AddScoped(typeof(IMenuLogic), typeof(MenuLogic));
 
 
             #region Cors
@@ -147,7 +150,7 @@ namespace _01.Web
             //Token验证
             app.UseMiddleware<TokenAuthMiddle>();
 
-            
+
             app.UseRouting();
 
             app.UseAuthorization();
