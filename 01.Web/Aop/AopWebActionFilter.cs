@@ -3,6 +3,7 @@ using _02.Entitys;
 using _05.Toolkit.JwtToken;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace _01.Web.Aop
 {
@@ -49,8 +50,8 @@ namespace _01.Web.Aop
             {
                 var tokenStr = context.HttpContext.Request.Headers["Authorization"];
                 string jwtStr = tokenStr.ToString().Substring("Bearer ".Length).Trim();
-                Account account = ((Account)RayPIMemoryCache.Get(jwtStr));
-
+                var accountJson = RayPIMemoryCache.Get(jwtStr).ToString();
+                Account account = JsonConvert.DeserializeObject<Account>(accountJson);
                 if (account != null)
                 {
                     _Controller.CurrentAccount = account;

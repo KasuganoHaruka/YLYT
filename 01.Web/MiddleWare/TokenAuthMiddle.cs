@@ -2,6 +2,7 @@
 using _05.Toolkit.JwtToken;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,17 +70,18 @@ namespace _01.Web.MiddleWare
                         _logger.LogInformation("刷新Token时间");
 
                         //TokenModel tm = ((TokenModel)RayPIMemoryCache.Get(jwtStr));
-                        Account account = ((Account)RayPIMemoryCache.Get(jwtStr));
+                        //Account account = JsonConvert.DeserializeObject<Account>(RayPIMemoryCache.Get(jwtStr).ToString());
+                        var accountJson = RayPIMemoryCache.Get(jwtStr).ToString();
 
-                        RayPIMemoryCache.AddMemoryCache(jwtStr, account, new TimeSpan(0, 60, 0), new TimeSpan(12, 00, 0));
+                       RayPIMemoryCache.AddMemoryCache(jwtStr, accountJson, new TimeSpan(0, 60, 0), new TimeSpan(12, 00, 0));
 
                         //提取tokenModel中的Sub属性进行authorize认证
-                        List<Claim> lc = new List<Claim>();
-                        Claim c = new Claim(account.User.User_Name + "Type", account.User.User_Name);
-                        lc.Add(c);
-                        ClaimsIdentity identity = new ClaimsIdentity(lc);
-                        ClaimsPrincipal principal = new ClaimsPrincipal(identity);
-                        httpContext.User = principal;
+                        //List<Claim> lc = new List<Claim>();
+                        //Claim c = new Claim(account.User.User_Name + "Type", account.User.User_Name);
+                        //lc.Add(c);
+                        //ClaimsIdentity identity = new ClaimsIdentity(lc);
+                        //ClaimsPrincipal principal = new ClaimsPrincipal(identity);
+                        //httpContext.User = principal;
 
                         IsNext = true;
                     }

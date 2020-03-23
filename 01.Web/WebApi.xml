@@ -104,12 +104,6 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:_01.Web.Controllers.Sys.MenuController.GetMenuByRoleIDResult">
-            <summary>
-            根据角色ID 获取菜单
-            </summary>
-            <returns></returns>
-        </member>
         <member name="T:_01.Web.Controllers.Sys.MenuFunctionController">
             <summary>
             菜单按钮功能控制器

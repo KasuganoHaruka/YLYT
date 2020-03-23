@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using _03.Logic.Interface;
+using Newtonsoft.Json;
 
 namespace _01.Web.Controllers
 {
@@ -60,7 +61,8 @@ namespace _01.Web.Controllers
                     IsSuperManage = false
                 };
 
-                var token = JwtToken.IssueJWT(CurrentAccount, new TimeSpan(0, 60, 0), new TimeSpan(12, 00, 0));
+                var accountJson = JsonConvert.SerializeObject(CurrentAccount);
+                var token = JwtToken.IssueJWT(accountJson, new TimeSpan(0, 60, 0), new TimeSpan(12, 00, 0));
                 return token;
             }
         }
